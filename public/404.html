@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+<html lang='ja'>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='Takuro Ishii' name='Author'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>The page you were looking for doesn't exist (404)</title>
+    <link href="/stylesheets/reset_all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/user.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 7]>
+      <link href="/stylesheets/ie6.css" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <style type="text/css">
+      div.dialog { top: 50%; left: 50%; position: absolute; background: #eee; width: 500px; height: 250px; margin-top: -175px; margin-left: -300px; padding: 50px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; behavior: url(/stylesheets/PIE.htc); }
+    </style>
+  </head>
 
-<body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
-  </div>
-</body>
+  <body>
+    <!-- This file lives in public/404.html -->
+    <div class="dialog">
+      <h1>404</h1>
+      <p>
+        申し訳ありませんがページが見つかりません。
+        <br />
+        ブラウザの戻るボタンをクリックするか、
+        <a href="/">こちら</a>をクリックしてください。
+      </p>
+      <p>
+        We're sorry...
+        <br />
+        The page you were looking for doesn't exist.
+        <a href="/">Click here.</a>
+      </p>
+    </div>
+  </body>
 </html>

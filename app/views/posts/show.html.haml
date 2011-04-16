@@ -1,0 +1,16 @@
+= link_to 'Home', "/"
+&gt;
+=@post.title
+
+%article
+  %header
+    %h2= @post.title
+    .clear
+  .post= raw @post.body.gsub("&lt;", "<").gsub("&gt;", ">")
+  %footer
+    %time{:datetime => @post.created_at, :pubdate => "pubdate"}
+      = @post.created_at.strftime("%Y/%m/%d %H:%M:%S")
+
+= link_to 'Home', "/"
+&gt;
+=@post.title

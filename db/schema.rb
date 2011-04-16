@@ -10,12 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110416022004) do
+ActiveRecord::Schema.define(:version => 20110416151323) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
+    t.text     "raw_body"
     t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["permalink"], :name => "permalink_idx"
+
+  create_table "tags", :force => true do |t|
+    t.integer  "post_id"
+    t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

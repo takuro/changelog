@@ -1,5 +1,14 @@
 Changelog::Application.routes.draw do
+
   resources :posts
+
+  root :to => "posts#index"
+  controller :posts do
+    match "new", :to => :new
+    match "log/:permalink", :to => :show
+    match "log/:permalink/edit", :to => :edit
+    match "log/:permalink/destroy", :to => :destroy
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,43 @@
+!!!
+%html{:lang => "ja"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "Author", :content => "Takuro Ishii"}
+    %meta{:"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    = csrf_meta_tag
+    %title isitkr changelog
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=IM+Fell+English:regular,italic"
+    = stylesheet_link_tag "reset_all", "snippet", "user"
+    /[if lt IE 7]
+      = stylesheet_link_tag "ie6.css"
+  %body#body
+    #main
+      %header#logo
+        %h1
+          = link_to "isitkr changelog", "/"
+      .g720
+        = yield
+      %aside.g240
+        %nav
+          %h6
+            Recent logs
+          %ul
+            - Post.order("id DESC").all.each do |post|
+              %li= link_to post.title, "/log/#{post.permalink}"
+        %h6
+          Logger
+        %figure
+          = image_tag "http://api.twitter.com/1/users/profile_image/isitkr.json?size=bigger", :alt => "isitkr の Twitter プロフィール画像"
+          %figcaption isitkr
+        %ul
+          %li= link_to "PHPLab", "http://www7.atpages.jp/phplab/"
+          %li= link_to "Tumblr - isitkr", "http://isitkr.tumblr.com/"
+          %li= link_to "Twitter @isitkr", "http://twitter.com/isitkr"
+      .clear
+
+      %footer
+        &copy; 
+        = Time.now.strftime("%Y")
+        isitkr.org
+
+  = javascript_include_tag "jquery.min.js", "rails.js", "jquery.snippet.min.js", "application"

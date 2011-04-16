@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    @posts = Post.order("id DESC").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by_permalink(params[:permalink])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,23 +34,23 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by_permalink(params[:permalink])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    post = params[:post]
+    post[:body] = post[:raw_body]
+    @post = Post.new(post)
+    @post.remove_html_tag
+    @post.wiki_syntax_to_html
+    @post.remove_break_return_and_add_br_tag
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
-    end
+    #Tag.add(@post.id, params[:tag])
+
+    @post.save
+    redirect_to "/"
   end
 
   # PUT /posts/1
@@ -58,26 +58,30 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
-    end
+    post_params = params[:post]
+    post_params[:body] = post_params[:raw_body]
+    post = Post.new(post_params)
+    post.remove_html_tag
+    post.wiki_syntax_to_html
+    post.remove_break_return_and_add_br_tag
+    update_post_params = {
+      :id => params[:id],
+      :title => post.title,
+      :raw_body => post.raw_body,
+      :body => post.body,
+      :permalink => post.permalink
+    }
+
+    @post.update_attributes(update_post_params)
+    redirect_to "/log/#{update_post_params[:permalink]}"
   end
 
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by_permalink(params[:permalink])
     @post.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to "/"
   end
 end

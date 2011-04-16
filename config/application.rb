@@ -38,5 +38,35 @@ module Changelog
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # wiki 記法にマッチさせるための正規表現
+    config.match_regex = {
+      :precode => /^[\ ](.*)$/, # 行頭が半角スペース -> code と pre で囲む
+      :em => /'{3}([^(?:''')]+)'{3}/, # シングルクォーテーション 3 つで囲まれた文字列 -> em
+      :strong => /'{2}([^(?:'')]+)'{2}/, # シングルクォーテーション 2 つで囲まれた文字列 -> strong
+      :link => /\[{2}(.+):(https?:\/\/.+)\]{2}/, # リンク
+      :h5 => /^\*{3}(.*)$/, # 行頭が *** -> 見出し h5
+      :h4 => /^\*{2}(.*)$/, # 行頭が ** -> 見出し h4
+      :h3 => /^\*{1}(.*)$/, # 行頭が * -> 見出し h3
+      :ul => /^([\-].*)$/, # 行頭がハイフン（liに変換前） -> ul
+      :ul_li => /^[\-](.*)$/, # 行頭がハイフン -> li
+      :ul_tag => /<ul>/, # ul タグにマッチ
+      :ol => /^([\+].*)$/, # 行頭がプラス（liに変換前） -> ol
+      :ol_li => /^[\+](.*)$/, # 行頭がプラス -> oi
+      :ol_tag => /<ol>/, # ol タグにマッチ
+      :code => /^\[\[([^:|\[]+)\]\]$/, # ソースコードの種別にマッチ
+    }
+
+    # wiki 記法にマッチさせないための正規表現
+    config.not_match_regex = {
+      :precode => /^[^\ ](.*)$/, # 行頭が半角スペースでない
+      :ul => /^[^\-](.*)$/, # 行頭がハイフンでない
+      :ol => /^[^\+](.*)$/, # 行頭がプラスでない
+    }
+
   end
+end
+
+def d v="raise"
+  raise v.inspect
 end
