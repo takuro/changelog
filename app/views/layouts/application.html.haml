@@ -5,7 +5,10 @@
     %meta{:name => "Author", :content => "Takuro Ishii"}
     %meta{:"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     = csrf_meta_tag
-    %title isitkr changelog
+    - if @post_title.blank?
+      %title isitkr changelog
+    - else
+      %title= "#{@post_title} | isitkr changelog" 
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=IM+Fell+English:regular,italic"
     = stylesheet_link_tag "reset_all", "snippet", "user"
     /[if lt IE 7]
@@ -27,9 +30,8 @@
         %h6
           Logger
         %figure
-          = image_tag "http://api.twitter.com/1/users/profile_image/isitkr.json?size=bigger", :alt => "isitkr の Twitter プロフィール画像"
-          %figcaption isitkr
-        %ul
+          = link_to( image_tag( "http://api.twitter.com/1/users/profile_image/isitkr.json?size=bigger", :alt => "isitkr の Twitter プロフィール画像"), "http://twitter.com/isitkr")
+        %ul#another_site
           %li= link_to "PHPLab", "http://www7.atpages.jp/phplab/"
           %li= link_to "Tumblr - isitkr", "http://isitkr.tumblr.com/"
           %li= link_to "Twitter @isitkr", "http://twitter.com/isitkr"

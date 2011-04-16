@@ -1,27 +1,38 @@
 @charset "utf-8";
 
+body {
+  background: url(../images/bg.jpg) repeat;
+}
+
 a {
   color: #336699;
   text-decoration: none;
 }
 
-h1 a { color: #444; }
-h1 a:hover { color: #336699; }
+h1 a, h2 a { color: #444; }
+h1 a:hover, h2 a:hover { color: #336699; }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
   margin-top: 40px;
 }
 
-h1 { color: #444; font-size: 2em; }
+h1 {
+  color: #444;
+  font-size: 3.5em;
+}
 h2 {
-  background: #777;
-  color: #fff;
-  padding: 10px;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin: 10px 0;
 } 
 h3, h4, h5, h6 { color: #555; }
+
+img {
+  display: block;
+  background: rgba(200, 200, 200, 0.3);
+  padding: 5px;
+  margin: 10px 0;
+}
+
 
 aside {
   margin-top: 18px;
@@ -33,21 +44,11 @@ aside li {
   margin: 0;
 }
 
-#logo {
-  padding: 10px 0;
+#logo, aside h6, article header time, #another_site {
   font-family: 'IM Fell English', serif;
-  font-style: normal;
-  font-weight: 400;
-  text-shadow: none;
-  text-decoration: none;
-  text-transform: none;
-  letter-spacing: 0em;
-  word-spacing: 0em;
-  line-height: 1.2;
 }
 
 #main {
-  background: #fff;
   padding: 10px;
 }
 
@@ -62,27 +63,20 @@ footer {
   color: #777;
 }
 
-article header p {
-  text-align: right;
-}
-
-em {
-  font-size: 0.85em;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  color: #777;
-}
-
 article header {
   margin: 40px 0;
 }
 
+article header time {
+  display: block;
+  font-size: 1.8em;
+}
+
 article footer {
   font-size: 0.85em;
-  border-top: solid 1px #ddd;
-  margin-top: 40px;
+  margin-top: 20px;
   padding-top: 10px;
+  margin-bottom: 70px;
 }
 
 select, input[type="password"], input[type="text"], textarea {
@@ -117,4 +111,11 @@ footer li {
   padding: 0;
 }
 
+em {
+  font-size: 0.85em;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color: #777;
+}
 
