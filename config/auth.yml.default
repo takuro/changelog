@@ -1,0 +1,5 @@
+salt: auth_salt
+auth:
+  id: 1
+  username: user_name
+  password: hashed_password

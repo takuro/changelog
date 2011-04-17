@@ -1,4 +1,14 @@
+require 'digest/sha2'
+
 class PostsController < ApplicationController
+  before_filter :authenticate, :only => [
+    :new,
+    :edit,
+    :create,
+    :update,
+    :destroy
+  ]
+
   # GET /posts
   # GET /posts.xml
   def index
@@ -85,4 +95,25 @@ class PostsController < ApplicationController
 
     redirect_to "/"
   end
+
+  def login
+    if request.post?
+      account = YAML.load_file("#{Rails.root}/config/auth.yml")
+      username = params[:username]
+      password = params[:password]
+
+      salt = account["salt"]
+      hashed_passwd = Digest::SHA256.hexdigest("#{salt}+#{password}")
+      unless username == account["auth"]["username"]
+        return
+      end
+      unless hashed_passwd == account["auth"]["password"]
+        return
+      end
+
+      session[:user_id] = account["auth"]["id"]
+      redirect_to "/"
+    end
+  end
+
 end

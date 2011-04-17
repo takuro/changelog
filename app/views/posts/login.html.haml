@@ -1,0 +1,10 @@
+%h2.typewriter Login
+= form_tag :action => :login do
+  = label_tag :username
+  = text_field_tag :username
+  %br
+  = label_tag :password
+  = password_field_tag :password
+  %br 
+  .actions
+    = submit_tag "Login"
