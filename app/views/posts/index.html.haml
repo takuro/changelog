@@ -7,5 +7,3 @@
     .post= raw post.body.gsub("&lt;", "<").gsub("&gt;", ">")
     %footer
       = link_to :Permalink, "/log/#{post.permalink}"
-      /= link_to 'Edit', "/log/#{post.permalink}/edit"
-      /= link_to 'Destroy', "/log/#{post.permalink}/destroy", :confirm => 'Are you sure?', :method => :delete
