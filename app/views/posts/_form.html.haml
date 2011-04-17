@@ -12,13 +12,15 @@
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :permalink
+    = f.label :permalink, "Permalink (only : alphabet, digit, - )"
     = f.text_field :permalink
   /.field
   /  = label_tag :tag
   /  = text_field_tag :tag
   .field
-    = f.label :raw_body
+    = f.label :raw_body, "Body"
     = f.text_area :raw_body
   .actions
+    = link_to "Cancel", "/"
+    |
     = f.submit

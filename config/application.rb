@@ -64,6 +64,9 @@ module Changelog
       :ol => /^[^\+](.*)$/, # 行頭がプラスでない
     }
 
+    # "Recent logs" に表示する記事数
+    config.recent_logs = 5
+
   end
 end
 
