@@ -109,7 +109,7 @@ class Post < ActiveRecord::Base
       html_text << tmp_str_line
     end
 
-    self.body = html_text.join("")
+    self.body = html_text.join("\r\n")
   end
 
   def remove_break_return_and_add_br_tag
