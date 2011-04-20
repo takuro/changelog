@@ -1,5 +1,152 @@
-# この README は書きかけです。
+Changelog（アプリ名）
+=========================
 
-changelog（アプリの名前）
+作者
+----
+Takuro Ishii（ isitkr ）
 
-マイクロブログです。
+
+Web サイト
+----
+http://isitkr.org/
+このアプリを利用したブログを公開しています。
+
+
+これはなに？
+----
+- ブログです。
+- HTML5 と CSS3 を利用しています。
+- 個人利用を想定しています。
+- PukiWiki 記法の一部をサポートしています。
+- ミニマルなデザインを心がけています。
+- 管理者画面はありません。設定はすべてサーバ上のファイルを編集して行います。
+- 複数人でのブログ記事作成・編集は考慮していません。
+
+
+動作環境
+----
+Ruby 1.9.2
+Ruby on Rails 3.0.6
+
+上記環境以外での動作は確認していません。
+
+
+インストール
+----
+1. 最新版を https://github.com/takuro/changelog からダウンロードします。
+   サーバに git がインストールされているならば、以下のコマンドでもダウンロードできます。
+
+   git clone git://github.com/takuro/changelog.git
+
+2. サーバの適当なところに配置します。
+3. config/database.yml.default を環境に合わせて編集して、ファイル名を database.yml にします。
+4. 以下のコマンドを実行して、プラグインをダウンロードします。
+   
+   bundle install
+
+5. 以下のコマンドを実行して、データベースを作成します。
+   
+   rake db:migrate
+
+6. config/application.rb の 67 行目あたりから下の個別設定を行います。
+   サイトの名前などを設定してください。
+7. config/auth.yml.default に認証用の設定を記述し、ファイル名を auth.yml にします。
+    - salt には、ハッシュ化するときにふりかける、適当な文字列を記述します。文字列は何でもいいです。
+    - auth の id は 1 のままにしてください。今後、複数人での記事作成などをサポートするときに、使うかもです。
+    - auth の username には、認証に使うユーザ名を記述します。
+    - auth の password には、ハッシュ化したパスワードを記述します。
+      パスワードをハッシュ化するには、changelog ディレクトリに移動して、以下のコマンドを実行します。
+
+      rails c
+      require "Utility.rb"; Utility.make_hashed_password "パスワードにしたい文字列", "salt にしたい文字列"
+
+      64 文字のランダムな文字列が表示されるので、auth の password に記述してください。
+8. サーバを起動します。
+
+
+記事の作成・編集・削除
+----
+http://your.site.domain/ がトップ URL だと仮定します。
+まずは http://your.site.domain/login にアクセスしてログインしてください。
+ブラウザを閉じるとログアウトになります。
+
+- 記事の作成
+  http://your.site.domain/new にアクセスします。
+  確認画面は表示されません。
+- 記事の編集
+  http://your.site.domain/log/perma-link を編集する場合、
+  http://your.site.domain/log/perma-link/edit にアクセスします。
+  確認画面は表示されません。
+- 記事の削除
+  http://your.site.domain/log/perma-link を削除する場合、
+  http://your.site.domain/log/perma-link/destroy にアクセスします。
+  削除確認はありません。
+
+PukiWiki 記法のサポート
+----
+サポートしているのは以下の記法です。
+
+--
+
+見出し
+* レベル1
+** レベル2
+*** レベル3
+
+--
+
+<code><pre>...</pre></code> で囲む
+ 行頭に半角スペース
+
+ソースコードをシンタックスカラーをつけて記載したいときは以下のようにします。
+たとえば Ruby コードを載せる場合。
+
+[[ruby]]
+ def hello
+   p "hello"
+ end
+
+言語名を[[]] で囲み、その次の行から行頭に半角スペースをいれたソースコードを記述します。
+c, cpp, csharp, css, flex, html, java, javascript, javascript_dom, perl, php, python, ruby, sql, xml です。
+コードの色づけには、Snippet :: jQuery Syntax Highlighter（ http://www.steamdev.com/snippet/ ）を利用しています。
+
+--
+
+<string>...</string> で囲む（強く注目させたいときに使用します。）
+''シングルクォーテーション 2 つで囲みます''
+
+--
+
+<em>...</em> で囲む（さりげない注意書きに使用します。）
+'''シングルクォーテーション 3 つで囲みます'''
+
+--
+
+リンク
+[[サイト名:URL]]
+
+--
+
+リスト（ ul ）
+-行頭にハイフン（ネストはサポートしていません）
+
+--
+
+リスト（ ol ）
++行頭にプラス（ネストはサポートしていません）
+
+--
+
+
+ToDo
+----
+- 画像アップロード、挿入
+
+
+ライセンス
+----
+MIT License
+http://creativecommons.org/licenses/MIT/
+http://ja.wikipedia.org/wiki/MIT_License
+
+

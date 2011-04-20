@@ -64,7 +64,7 @@ module Changelog
       :ol => /^[^\+](.*)$/, # 行頭がプラスでない
     }
 
-    ## ここから下、ユーザ設定
+    ## ここから下、個別設定
     
     # 管理者の名前（meta タグの Author に反映される）
     config.author = "Takuro Ishii"
