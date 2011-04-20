@@ -24,7 +24,7 @@ module Changelog
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Tokyo'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -64,8 +64,38 @@ module Changelog
       :ol => /^[^\+](.*)$/, # 行頭がプラスでない
     }
 
+    ## ここから下、ユーザ設定
+    
+    # 管理者の名前（meta タグの Author に反映される）
+    config.author = "Takuro Ishii"
+    # サイトのタイトル
+    config.site_title = "isitkr changelog"
+
+    # サイトの右カラムにユーザアイコンを表示しない場合は、
+    #  - config.twitter_userid
+    #  - config.twitter
+    #  - config.user_icon_url
+    # を設定しないで、
+    # app/views/layouts/application.html.haml の 35 行目あたりの画像表示部分を
+    # コメントアウトしてください。
+    #
+    # Twitter のユーザ ID
+    config.twitter_userid = "isitkr"
+    # Twitter へのリンク
+    config.twitter = "http://twitter.com/#{config.twitter_userid}"
+    # ユーザアイコン URL
+    config.user_icon_url = "http://api.twitter.com/1/users/profile_image/#{config.twitter_userid}.json?size=bigger"
+
     # "Recent logs" に表示する記事数
     config.recent_logs = 5
+
+    # ほかのサイトへのリンク
+    config.another_sites = [
+      # "サイト名", "サイトへのリンク URL",
+      "PHPLab", "http://www7.atpages.jp/phplab/",
+      "Tumblr - #{config.twitter_userid}", "http://isitkr.tumblr.com/",
+      "Twitter @#{config.twitter_userid}", config.twitter,
+    ]
 
   end
 end

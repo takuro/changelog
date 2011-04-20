@@ -1,14 +1,17 @@
+- config = Changelog::Application.config
 !!!
 %html{:lang => "ja"}
   %head
     %meta{:charset => "utf-8"}
-    %meta{:name => "Author", :content => "Takuro Ishii"}
+    %meta{:name => "Author", :content => config.author}
     %meta{:"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{:"http-equiv" => "Content-Style-Type", :content => "text/css"}
+    %meta{:"http-equiv" => "Content-Script-Type", :content => "text/javascript"}
     = csrf_meta_tag
     - if @post_title.blank?
-      %title isitkr changelog
+      %title= config.site_title
     - else
-      %title= "#{@post_title} | isitkr changelog" 
+      %title= "#{@post_title} | #{config.site_title}" 
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=IM+Fell+English:regular,italic"
     = stylesheet_link_tag "reset_all", "snippet", "user"
     /[if lt IE 7]
@@ -17,7 +20,7 @@
     #main
       %header#logo
         %h1
-          = link_to "isitkr changelog", "/"
+          = link_to config.site_title, "/"
       .g720
         = yield
       %aside.g240
@@ -25,16 +28,15 @@
           %h6
             Recent logs
           %ul
-            - Post.order("id DESC").limit(Changelog::Application.config.recent_logs).all.each do |post|
+            - Post.order("id DESC").limit(config.recent_logs).all.each do |post|
               %li= link_to post.title, "/log/#{post.permalink}"
         %h6
           Logger
         %figure
-          = link_to( image_tag( "http://api.twitter.com/1/users/profile_image/isitkr.json?size=bigger", :alt => "isitkr の Twitter プロフィール画像"), "http://twitter.com/isitkr")
+          = link_to( image_tag(config.user_icon_url, :alt => "#{config.twitter_userid} の Twitter プロフィール画像"), config.twitter)
         %ul#another_site
-          %li= link_to "PHPLab", "http://www7.atpages.jp/phplab/"
-          %li= link_to "Tumblr - isitkr", "http://isitkr.tumblr.com/"
-          %li= link_to "Twitter @isitkr", "http://twitter.com/isitkr"
+          - 0.step((config.another_sites.size.to_i - 1), 2) do |i|
+            %li= link_to config.another_sites[i], config.another_sites[i+1]
       .clear
 
       %footer
