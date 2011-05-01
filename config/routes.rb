@@ -9,6 +9,7 @@ Changelog::Application.routes.draw do
     match "log/:permalink/edit", :to => :edit
     match "log/:permalink/destroy", :to => :destroy
     match "login", :to => :login
+    match "upload_images", :to => :upload_images
   end
 
   # The priority is based upon order of creation:

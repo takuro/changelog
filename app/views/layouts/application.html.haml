@@ -13,7 +13,7 @@
     - else
       %title= "#{@post_title} | #{config.site_title}" 
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=IM+Fell+English:regular,italic"
-    = stylesheet_link_tag "reset_all", "snippet", "user"
+    = stylesheet_link_tag "reset_all", "snippet", "jquery.fileupload-ui", "user"
     /[if lt IE 7]
       = stylesheet_link_tag "ie6.css"
   %body#body
@@ -44,4 +44,8 @@
         = Time.now.strftime("%Y")
         isitkr.org
 
-  = javascript_include_tag "jquery.min.js", "rails.js", "jquery.snippet.min.js", "application"
+  = javascript_include_tag "jquery.min.js", "rails.js", "jquery.snippet.min.js"
+  - unless @ex_js_files.blank?
+    - @ex_js_files.each do |js|
+      = javascript_include_tag js
+  = javascript_include_tag "application"

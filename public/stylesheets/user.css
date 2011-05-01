@@ -152,3 +152,25 @@ em {
 .actions {
   text-align: right;
 }
+
+#uploaded-images,
+#uploaded-images p,
+#uploaded-images ul
+{
+  display: none;
+}
+
+#uploaded-images p {
+  margin: 15px 0;
+}
+
+#uploaded-images li {
+  list-style: none;
+  margin: 0;
+  padding: 3px;
+}
+
+#insert-images {
+  padding-left: 0;
+  margin: 0;
+}

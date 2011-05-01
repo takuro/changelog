@@ -45,6 +45,7 @@ module Changelog
       :em => /'{3}([^(?:''')]+)'{3}/, # シングルクォーテーション 3 つで囲まれた文字列 -> em
       :strong => /'{2}([^(?:'')]+)'{2}/, # シングルクォーテーション 2 つで囲まれた文字列 -> strong
       :link => /\[{2}(.+):(https?:\/\/.+)\]{2}/, # リンク
+      :img => /^\#ref\((.+)\,(.+)\)$/, # 行頭が「 #ref( 」で、間に画像へのURL、末尾に「 ) 」-> 画像 img
       :h5 => /^\*{3}(.*)$/, # 行頭が *** -> 見出し h5
       :h4 => /^\*{2}(.*)$/, # 行頭が ** -> 見出し h4
       :h3 => /^\*{1}(.*)$/, # 行頭が * -> 見出し h3
@@ -70,6 +71,13 @@ module Changelog
     config.author = "Takuro Ishii"
     # サイトのタイトル
     config.site_title = "isitkr changelog"
+    
+    # 画像のアップロードディレクトリ URL
+    config.image_upload_url = "/images/"
+    # 画像のアップロードディレクトリ
+    config.image_upload_dir = "#{Rails.root}/public#{config.image_upload_url}"
+    # 許可する画像のサイズ（byte単位）
+    config.image_upload_size = 200000000
 
     # サイトの右カラムにユーザアイコンを表示しない場合は、
     #  - config.twitter_userid
@@ -95,6 +103,7 @@ module Changelog
       "PHPLab", "http://www7.atpages.jp/phplab/",
       "Tumblr - #{config.twitter_userid}", "http://isitkr.tumblr.com/",
       "Twitter @#{config.twitter_userid}", config.twitter,
+      "Github", "https://github.com/takuro",
     ]
 
   end

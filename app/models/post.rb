@@ -43,6 +43,8 @@ class Post < ActiveRecord::Base
       tmp_str_line = wiki_syntax_to_em(tmp_str_line)
       # シングルクォーテーション 2 つで囲まれた文字列を <strong>...</strong> で囲む
       tmp_str_line = wiki_syntax_to_strong(tmp_str_line)
+      # #ref(img_src) を img タグに
+      tmp_str_line = wiki_syntax_to_img(tmp_str_line)
       # コード種別を取得する
       code = get_code(tmp_str_line)
       next if tmp_str_line =~ Changelog::Application.config.match_regex[:code]
@@ -174,6 +176,14 @@ class Post < ActiveRecord::Base
     return text
   end
 
+  # #ref(img_src) を img タグに
+  def wiki_syntax_to_img text
+    if text =~ Changelog::Application.config.match_regex[:img]
+      text = "<img src=\"#{$1}\" alt=\"#{$2}\" />"
+    end
+    return text
+  end
+
   # ハイフンを li に変換
   def wiki_syntax_to_ul_li text
     if text =~ Changelog::Application.config.match_regex[:ul_li]
@@ -206,6 +216,35 @@ class Post < ActiveRecord::Base
       code = $1
     end
     return code
+  end
+
+  # @return 保存失敗 -> false
+  # @return 保存成功 -> json 文字列
+  def self.upload_image image
+    upload_dir = Changelog::Application.config.image_upload_dir
+    return false unless self.is_image?(image.content_type)
+    return false if image.size.to_i > Changelog::Application.config.image_upload_size
+
+    now = Time.now.strftime("%Y%m%d%H%M%S")
+    filename = "img-#{now}-#{image.original_filename}"
+    begin
+      File.open("#{upload_dir}#{filename}", 'wb') do |f|
+        f.write(image.read)
+      end
+    rescue
+      return false
+    else
+      json = "{\"name\":\"#{filename}\","
+      json += "\"size\":#{image.size},"
+      json += "\"url\":\"#{Changelog::Application.config.image_upload_url}#{filename}\","
+      json += "\"type\":\"#{image.content_type}\"}"
+      return json
+    end
+  end
+
+  def self.is_image? mime
+    return true if /^image\/.*$/ =~ mime
+    return false
   end
 
 end

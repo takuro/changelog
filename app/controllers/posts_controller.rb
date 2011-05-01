@@ -1,13 +1,7 @@
 require 'digest/sha2'
 
 class PostsController < ApplicationController
-  before_filter :authenticate, :only => [
-    :new,
-    :edit,
-    :create,
-    :update,
-    :destroy
-  ]
+  before_filter :authenticate, :only => [ :new, :edit, :create, :update, :destroy, :upload_images ]
 
   # GET /posts
   # GET /posts.xml
@@ -35,6 +29,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
+    @ex_js_files = ["jquery.fileupload-ui.js", "jquery.fileupload.js", "fileupload-application.js"]
     @post = Post.new
 
     respond_to do |format|
@@ -45,6 +40,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @ex_js_files = ["jquery.fileupload-ui.js", "jquery.fileupload.js", "fileupload-application.js"]
     @post = Post.find_by_permalink(params[:permalink])
   end
 
@@ -114,6 +110,11 @@ class PostsController < ApplicationController
       session[:user_id] = account["auth"]["id"]
       redirect_to "/"
     end
+  end
+
+  def upload_images
+    result = Post.upload_image params[:image]
+    render :text => result.to_s
   end
 
 end

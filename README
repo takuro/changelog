@@ -137,10 +137,11 @@ c, cpp, csharp, css, flex, html, java, javascript, javascript_dom, perl, php, py
 
 --
 
+画像（ img ）
+#ref(画像のURL,画像の説明)
+URL と画像の説明の間にあるコンマは必須。左右にスペースなどいれない。
 
-ToDo
-----
-- 画像アップロード、挿入
+--
 
 
 ライセンス

@@ -1,10 +1,18 @@
+= link_to "Insert images (option)", "#insert-images", :id => "insert-images"
+#uploaded-images
+  = form_tag({:action => :upload_images}, {:multipart => true, :id => :"upload-images"}) do
+    .field
+      = label_tag :image, :"Drag & Drop to upload images"
+      = file_field_tag :image, :multiple => "multiple"
+  %p 以下の文字列を文章中に挿入して画像を表示します。
+  %ul
+
 = form_for(@post) do |f|
   - if @post.errors.any?
     #error_explanation
       %h2
         = pluralize(@post.errors.count, "error")
         prohibited this post from being saved:
-
       %ul
         - @post.errors.full_messages.each do |msg|
           %li= msg
