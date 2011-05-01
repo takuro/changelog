@@ -29,7 +29,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @ex_js_files = ["jquery.fileupload-ui.js", "jquery.fileupload.js", "fileupload-application.js"]
     @post = Post.new
 
     respond_to do |format|
@@ -40,7 +39,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @ex_js_files = ["jquery.fileupload-ui.js", "jquery.fileupload.js", "fileupload-application.js"]
     @post = Post.find_by_permalink(params[:permalink])
   end
 
