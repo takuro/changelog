@@ -14,7 +14,7 @@ http://isitkr.org/
 
 これはなに？
 ----
-- ブログです。
+- ブログアプリケーションです。
 - HTML5 と CSS3 を利用しています。
 - 個人利用を想定しています。
 - PukiWiki 記法の一部をサポートしています。
@@ -151,3 +151,10 @@ http://creativecommons.org/licenses/MIT/
 http://ja.wikipedia.org/wiki/MIT_License
 
 
+利用している jQuery plugin
+----
+jQuery File Upload Plugin - blueimp
+https://github.com/blueimp/jQuery-File-Upload/
+
+Snippet :: jQuery Syntax Highlighter - SteamDev
+http://www.steamdev.com/snippet/
