@@ -123,7 +123,7 @@ h3, h4, h5, h6 { color: #555; }
 img { display: block; background: rgba(200, 200, 200, 0.3); padding: 5px; margin: 10px 0; }
 aside { margin-top: 18px; padding-left: 20px; }
 aside li { list-style: none; margin: 0; }
-#logo, aside h6, article header time, #another_site, .actions, #post_permalink, .typewriter, .new_post label, .edit_post label, input[type="submit"], footer { font-family: 'IM Fell English', serif; }
+#logo, aside h6, article header time, #another_site, #feed, .actions, #post_permalink, .typewriter, .new_post label, .edit_post label, input[type="submit"], footer { font-family: 'IM Fell English', serif; }
 #main { padding: 10px; } 
 .g720 { margin-left: 0; }
 footer { margin-top: 40px; margin-bottom: 10px; text-align: right; color: #777; }

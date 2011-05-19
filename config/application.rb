@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -71,6 +72,10 @@ module Changelog
     config.author = "Takuro Ishii"
     # サイトのタイトル
     config.site_title = "isitkr changelog"
+    # サイトの説明
+    config.site_description = ""
+    # サイトのトップページ URL（ 使用箇所：views/posts/index.rss.builder ）
+    config.site_url = "http://isitkr.org/"
     
     # 画像のアップロードディレクトリ URL
     config.image_upload_url = "/images/"

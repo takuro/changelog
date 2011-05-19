@@ -21,25 +21,31 @@
       = stylesheet_link_tag "ie6.css"
   %body#body
     #main
-      %header#logo
-        %h1
+      %header
+        %h1#logo
           = link_to config.site_title, "/"
+        - if !config.site_description.blank?
+          %section
+            = config.site_description
       .g720
         = yield
       %aside.g240
         %nav
-          %h6
-            Recent logs
+          %h6 Recent logs
           %ul
             - Post.order("id DESC").limit(config.recent_logs).all.each do |post|
               %li= link_to post.title, "/log/#{post.permalink}"
-        %h6
-          Logger
+        %h6 Logger
         %figure
           = link_to( image_tag(config.user_icon_url, :alt => "#{config.twitter_userid} の Twitter プロフィール画像"), config.twitter)
-        %ul#another_site
-          - 0.step((config.another_sites.size.to_i - 1), 2) do |i|
-            %li= link_to config.another_sites[i], config.another_sites[i+1]
+        - if !config.another_sites.blank?
+          %h6 Links
+          %ul#another_site
+            - 0.step((config.another_sites.size.to_i - 1), 2) do |i|
+              %li= link_to config.another_sites[i], config.another_sites[i+1]
+        %h6 Feed
+        %ul#feed
+          %li= link_to "RSS 2.0", "/posts.rss"
       .clear
 
       %footer

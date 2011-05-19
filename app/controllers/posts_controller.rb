@@ -5,12 +5,14 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.xml
+  # GET /posts.rss
   def index
     @posts = Post.order("id DESC").all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
+      format.rss  { render :layout => false }
     end
   end
 
