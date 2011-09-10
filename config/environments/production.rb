@@ -60,4 +60,8 @@ Changelog::Application.configure do
 
   # Specifies the header that your server uses for sending files
   #config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  #
+
+  config.assets.js_compressor  = :uglifier
+  #config.assets.css_compressor = :scss
 end
