@@ -3,15 +3,15 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# If you have a Gemfile, require the gems listed there, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require *Rails.groups(:assets => %w(development test))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 
 module Changelog
   class Application < Rails::Application
-
-    config.assets.enabled = true
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -34,14 +34,17 @@ module Changelog
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w()
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
 
     # wiki 記法にマッチさせるための正規表現
     config.match_regex = {
@@ -81,9 +84,9 @@ module Changelog
     config.site_url = "http://isitkr.org/"
     
     # 画像のアップロードディレクトリ URL
-    config.image_upload_url = "/images/"
+    config.image_upload_url = "/assets/"
     # 画像のアップロードディレクトリ
-    config.image_upload_dir = "#{Rails.root}/public#{config.image_upload_url}"
+    config.image_upload_dir = "#{Rails.root}/app#{config.image_upload_url}images/"
     # 許可する画像のサイズ（byte単位）
     config.image_upload_size = 200000000
 

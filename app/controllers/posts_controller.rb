@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @posts = Post.order("id DESC").all
     @post = Post.find_by_permalink(params[:permalink])
     @post_title = @post.title
 
@@ -32,7 +31,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @posts = Post.order("id DESC").all
     @post = Post.new
 
     respond_to do |format|
@@ -43,7 +41,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @posts = Post.order("id DESC").all
     @post = Post.find_by_permalink(params[:permalink])
   end
 

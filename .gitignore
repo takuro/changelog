@@ -2,9 +2,9 @@
 db/*.sqlite3
 log/*.log
 tmp/
+.sass-cache/
 *.rbc
 *.sassc
-.sass-cache
 capybara-*.html
 .rspec
 /vendor/bundle
