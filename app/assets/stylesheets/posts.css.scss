@@ -1,0 +1,187 @@
+@import "_css3pointoh.css.scss";
+
+$blue: #71C4FE;
+$red: #F8007A;
+$black: #444;
+$border-color: #dcdcdc;
+$logo-color: #C4C4B6;
+
+@mixin for-all-input-element {
+  font: bold 16px Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 0 #fff;
+  @include transition(border-color .218s);
+  @include border-radius(2px);
+  border: solid 1px $border-color;
+  padding: 10px 15px;
+}
+
+@mixin active-input-element {
+  border-color: #999;
+  @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+body {
+  background: #fff;
+  background: url(/images/polaroid.png);
+}
+
+#main {
+  padding: 10px 0;
+  margin: 10px 0;
+  background: #fff;
+  @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+.global {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 0;
+  @include transition(all .3s);
+  &:hover {
+    color: darken($blue, 15%);
+  }
+}
+
+h1 {
+  text-shadow: 0 1px 2px lighten($black, 40%);
+  font-size: 1.7em;
+  &:after {
+    color: #dbdbdb;
+    content : attr(data-title);
+  }
+  a {
+    color: lighten($blue, 1%);
+  }
+}
+                              
+h2 {
+  display:block;
+  margin: 0;
+  padding: 0;
+  margin: 10px 0;
+  font-size: 1.7em;
+  a {
+    display:block;
+    margin: 0;
+    padding: 0;
+  }
+} 
+h3, h4, h5, h6 { color: lighten($black, 5%); }
+
+img {
+  display: block;
+  background: rgba(200, 200, 200, 0.3);
+  padding: 5px;
+  margin: 10px 0;
+}
+
+footer {
+  color: lighten($black, 10%);
+  text-align: right;
+  li {
+    list-style: none;
+    margin: 5px 0;
+    padding: 0;
+  }
+}
+
+footer.global {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+article {
+  border-bottom: dashed 1px $border-color;
+  margin-bottom: 15px;
+  header {
+    margin-top: 20px;
+  }
+  time {
+    font-size: 0.75em;
+    color: lighten($black, 20%);
+    display:block;
+    text-align: right;
+  }
+  footer {
+    margin-bottom: 15px;
+  }
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+}
+
+select, input[type="password"], input[type="text"], textarea {
+  @include for-all-input-element;
+  width: 97%;
+  font-size: 1.5em;
+  margin: 10px 0;
+  &:focus { @include active-input-element; }
+}
+
+textarea {
+  font-size: 0.9em;
+}
+
+input[type="submit"] {
+  color: #6e6e6e;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  background: #f3f3f3;
+  @include linear-gradient-background(#F5F5F5, #F1F1F1);
+  @include for-all-input-element;
+  &:hover {
+    color: #333;
+    @include active-input-element;
+  }
+  &:active {
+    color: #000;
+    border-color: #444;
+  }
+}
+
+em {
+  font: {
+    size: 0.85em;
+    style: normal;
+    variant: normal;
+    weight: normal;
+  }
+  color: #777;
+}
+
+.actions {
+  text-align: right;
+}
+
+#uploaded-images {
+  display: none;
+  p {
+    display: none;
+    margin: 15px 0;
+  }
+  ul {
+    display: none;
+  }
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 3px;
+  }
+}
+
+#insert-images {
+  padding-left: 0;
+  margin: 0;
+}
+

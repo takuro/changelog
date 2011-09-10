@@ -1,9 +1,9 @@
 - @posts.each do |post|
   %article
     %header
+      %h2= link_to post.title, "/log/#{post.permalink}"
       %time{:datetime => post.created_at, :pubdate => "pubdate"}
         = post.created_at.strftime("%Y/%m/%d %H:%M")
-      %h2= link_to post.title, "/log/#{post.permalink}"
     .post= raw post.body.gsub("&lt;", "<").gsub("&gt;", ">")
     %footer
       = link_to :Permalink, "/log/#{post.permalink}"

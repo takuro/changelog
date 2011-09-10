@@ -1,17 +1,17 @@
-= link_to 'Home', "/"
-&gt;
-=@post.title
+-#
+  = link_to 'Home', "/"
+  &gt;
+  =@post.title
 
 %article
   %header
+    %h2= @post.title
     %time{:datetime => @post.created_at, :pubdate => "pubdate"}
       = @post.created_at.strftime("%Y/%m/%d %H:%M")
-    %h2= @post.title
-    .clear
   .post= raw @post.body.gsub("&lt;", "<").gsub("&gt;", ">")
   %footer
-    = link_to :Permalink, "/log/#{@post.permalink}"
+    -#= link_to :Permalink, "/log/#{@post.permalink}"
 
-= link_to 'Home', "/"
-&gt;
-=@post.title
+    = link_to 'Home', "/"
+    &gt;
+    =@post.title
