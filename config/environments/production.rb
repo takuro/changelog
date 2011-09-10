@@ -64,4 +64,6 @@ Changelog::Application.configure do
 
   config.assets.js_compressor  = :uglifier
   #config.assets.css_compressor = :scss
+  #
+  #config.perform_caching = true
 end

@@ -19,6 +19,7 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'rake', '0.8.7'
+#gem 'smurf'
 
 # Use unicorn as the web server
 # gem 'unicorn'
