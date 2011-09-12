@@ -23,6 +23,8 @@ $logo-color: #C4C4B6;
 body {
   background: #fff;
   background: url(polaroid.png);
+  //background: url(inflicted.png);
+  //background: url(beige_paper.png);
 }
 
 #main {
@@ -39,13 +41,14 @@ body {
 }
 
 a {
-  color: $blue;
+  //color: $blue;
+  color: darken($blue, 10%);
   text-decoration: none;
   display: inline-block;
   padding: 5px 0;
   @include transition(all .3s);
   &:hover {
-    color: darken($blue, 15%);
+    color: darken($blue, 30%);
   }
 }
 
@@ -55,9 +58,6 @@ h1 {
   &:after {
     color: #dbdbdb;
     content : attr(data-title);
-  }
-  a {
-    color: lighten($blue, 1%);
   }
 }
                               
@@ -99,8 +99,8 @@ footer.global {
 }
 
 article {
-  border-bottom: dashed 1px $border-color;
-  margin-bottom: 15px;
+  border-bottom: dashed 1px lighten($black, 25%);
+  margin-bottom: 70px;
   header {
     margin-top: 20px;
   }
@@ -111,7 +111,7 @@ article {
     text-align: right;
   }
   footer {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 }
 
@@ -185,3 +185,24 @@ em {
   margin: 0;
 }
 
+.pagination {
+  color: lighten($black, 60%);
+  text-align: center;
+  .current {
+    color: lighten($black, 25%);
+  }
+  a, em {
+    padding: 5px 10px;
+    display: inline-block;
+    @include border-radius(2px);
+    font-size: 1em;
+  }
+  a {
+    border: solid 1px $border-color;
+    &:hover {
+      color: #fff;
+      background: $blue;
+      border-color: lighten($border-color, 20%);
+    }
+  }
+}

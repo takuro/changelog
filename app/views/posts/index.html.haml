@@ -7,3 +7,5 @@
     .post= raw post.body.gsub("&lt;", "<").gsub("&gt;", ">")
     %footer
       = link_to :Permalink, "/log/#{post.permalink}"
+%nav
+  = will_paginate @posts

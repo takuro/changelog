@@ -90,6 +90,10 @@ module Changelog
     # 許可する画像のサイズ（byte単位）
     config.image_upload_size = 200000000
 
+    # will_paginate の per_page
+    # 1 ページに何件表示するか
+    config.per_page = 5
+
     # サイトの右カラムにユーザアイコンを表示しない場合は、
     #  - config.twitter_userid
     #  - config.twitter
@@ -111,10 +115,12 @@ module Changelog
     # ほかのサイトへのリンク
     config.another_sites = [
       # "サイト名", "サイトへのリンク URL",
-      "PHPLab", "http://www7.atpages.jp/phplab/",
-      "Tumblr - #{config.twitter_userid}", "http://isitkr.tumblr.com/",
       "Twitter @#{config.twitter_userid}", config.twitter,
+      "Facebook", "http://www.facebook.com/takuro.ishii",
+      "Google+", "https://plus.google.com/u/0/105803868642482893081",
+      "Tumblr - #{config.twitter_userid}", "http://#{config.twitter_userid}.tumblr.com/",
       "Github", "https://github.com/takuro",
+      "PHPLab", "http://www7.atpages.jp/phplab/",
     ]
 
   end

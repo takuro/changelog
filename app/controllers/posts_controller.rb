@@ -1,13 +1,20 @@
 require 'digest/sha2'
 
 class PostsController < ApplicationController
-  before_filter :authenticate, :only => [ :new, :edit, :create, :update, :destroy, :upload_images ]
+  before_filter :authenticate, 
+                :only => [:new,
+                          :edit,
+                          :create,
+                          :update,
+                          :destroy,
+                          :upload_images]
 
   # GET /posts
   # GET /posts.xml
   # GET /posts.rss
   def index
-    @posts = Post.order("id DESC").all
+    #@posts = Post.order("id DESC").all
+    @posts = Post.page(params[:page]).order("id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
