@@ -7,8 +7,6 @@ $(function(){
   $("#insert-images").click(function(){
     $("#uploaded-images").toggle();
   });
-});
-$(function(){
   $("code.shell pre").snippet("c",{style:"the"});
   $("code.c pre").snippet("c",{style:"the"});
   $("code.cpp pre").snippet("cpp",{style:"the"});

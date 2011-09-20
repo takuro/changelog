@@ -115,6 +115,7 @@ class PostsController < ApplicationController
       end
 
       session[:user_id] = account["auth"]["id"]
+      UserMailer.send_sqlite_data.deliver
       redirect_to "/"
     end
   end

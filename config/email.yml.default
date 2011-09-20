@@ -1,0 +1,12 @@
+default:
+  from: "from@example.com"
+  to: "to@example.com"
+
+settings:
+  address: "smtp.server.name"
+  port: 587 
+  domain: "server.name"
+  authentication: :login
+  user_name: "hogehoge"
+  password: "hogehoge"
+  enable_starttls_auto: true
