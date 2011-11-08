@@ -16,10 +16,10 @@ class PostsController < ApplicationController
   # GET /posts.rss
   def index
     #@posts = Post.select("title, permalink, created_at").order("id DESC").limit(@@recent)
-    #@posts = Post.order("id DESC").all
+    @posts = Post.order("id DESC").all
     #@posts = Post.page(params[:page]).order("id DESC")
     
-    @posts = Post.select("title, permalink, created_at").order("id DESC").all
+    #@posts = Post.select("title, permalink, created_at").order("id DESC").all
     post = Post.order("id DESC").limit(1)
     @post = post[0]
     @post_title = @post.title
