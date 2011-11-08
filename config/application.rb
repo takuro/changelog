@@ -82,6 +82,9 @@ module Changelog
     config.site_description = ""
     # サイトのトップページ URL（ 使用箇所：views/posts/index.rss.builder ）
     config.site_url = "http://isitkr.org/"
+
+    # ログイン時、SQLite のバックアップをするか
+    config.backup_db_when_login = false
     
     # 画像のアップロードディレクトリ URL
     config.image_upload_url = "/assets/"
@@ -89,10 +92,6 @@ module Changelog
     config.image_upload_dir = "#{Rails.root}/app#{config.image_upload_url}images/"
     # 許可する画像のサイズ（byte単位）
     config.image_upload_size = 200000000
-
-    # will_paginate の per_page
-    # 1 ページに何件表示するか
-    config.per_page = 5
 
     # サイトの右カラムにユーザアイコンを表示しない場合は、
     #  - config.twitter_userid
@@ -110,7 +109,7 @@ module Changelog
     config.user_icon_url = "http://api.twitter.com/1/users/profile_image/#{config.twitter_userid}.json?size=bigger"
 
     # "Recent logs" に表示する記事数
-    config.recent_logs = 5
+    config.recent_logs = 10
 
     # ほかのサイトへのリンク
     config.another_sites = [

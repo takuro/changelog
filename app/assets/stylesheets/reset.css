@@ -19,3 +19,48 @@ body{line-height:1.4;font-size:0.9em;color:#333;}
 .grid { padding: 0 20px; }
 .row { margin-bottom: 1em; }
 .clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;margin-bottom:1em;}
+
+@media screen and (min-width: 720px) {
+  body { font-size: 0.875em; padding: 0; }
+  .grid{ margin:0 auto; padding: 0 10px; width:700px; }
+  .row{ clear:left; }
+  .slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:20px; }
+  .slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:100px; } /* Sixths */
+  .slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:220px; } /* Thirds */
+  .slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:460px; } /* Two-Thirds */
+  .slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:580px; } /* Five-Sixths */
+  .slot-6,.slot-7,.slot-8,.slot-9{ width:160px; } /* Quarters */
+  .slot-6-7-8,.slot-7-8-9{ width:520px; } /* Three-Quarters */
+  .slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:340px; } /* Halves */
+  .slot-0-1-2-3-4-5, .slot-6-7-8-9{ width: 100%; } /* Full-Width */
+  .slot-0,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-6,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-1 .slot-1,.slot-1-2 .slot-1,.slot-1-2 .slot-1-2,.slot-1-2-3 .slot-1,.slot-1-2-3 .slot-1-2,.slot-1-2-3 .slot-1-2-3,.slot-1-2-3-4 .slot-1,.slot-1-2-3-4 .slot-1-2,.slot-1-2-3-4 .slot-1-2-3,.slot-1-2-3-4 .slot-1-2-3-4,.slot-1-2-3-4-5 .slot-1,.slot-1-2-3-4-5 .slot-1-2,.slot-1-2-3-4-5 .slot-1-2-3,.slot-1-2-3-4-5 .slot-1-2-3-4,.slot-1-2-3-4-5 .slot-1-2-3-4-5,.slot-2 .slot-2,.slot-2-3 .slot-2,.slot-2-3 .slot-2-3,.slot-2-3-4 .slot-2,.slot-2-3-4 .slot-2-3,.slot-2-3-4 .slot-2-3-4,.slot-2-3-4-5 .slot-2,.slot-2-3-4-5 .slot-2-3,.slot-2-3-4-5 .slot-2-3-4,.slot-2-3-4-5 .slot-2-3-4-5,.slot-3 .slot-3,.slot-3-4 .slot-3,.slot-3-4 .slot-3-4,.slot-3-4-5 .slot-3,.slot-3-4-5 .slot-3-4,.slot-3-4-5 .slot-3-4-5,.slot-4 .slot-4,.slot-4-5 .slot-4,.slot-4-5 .slot-4-5,.slot-5 .slot-5,.slot-7 .slot-7,.slot-7-8 .slot-7,.slot-7-8 .slot-7-8,.slot-7-8-9 .slot-7,.slot-7-8-9 .slot-7-8,.slot-7-8-9 .slot-7-8-9,.slot-8 .slot-8,.slot-8-9 .slot-8,.slot-8-9 .slot-8-9{ margin-left:0 !important; }
+  .row:after { visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0; }
+  .row{
+    zoom:1;
+  }
+}
+
+@media screen and (min-width: 1236px) {
+  body { font-size: 1.125em; }
+  .grid{ width:1206px; }
+  .slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:176px; } /* Sixths */
+  .slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:382px; } /* Thirds */
+  .slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:794px; } /* Two-Thirds */
+  .slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:1000px; } /* Five-Sixths */
+  .slot-6,.slot-7,.slot-8,.slot-9{ width:279px; } /* Quarters */
+  .slot-6-7-8,.slot-7-8-9{ width:897px; } /* Three-Quarters */
+  .slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:588px; } /* Halves */
+}
+
+@media screen and (min-width: 986px) {
+  body { font-size: 100%; }
+  .grid{ width:966px; }
+  .slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5,.slot-0-1,.slot-0-1-2,.slot-0-1-2-3,.slot-0-1-2-3-4,.slot-0-1-2-3-4-5,.slot-1-2,.slot-1-2-3,.slot-1-2-3-4,.slot-1-2-3-4-5,.slot-2-3,.slot-2-3-4,.slot-2-3-4-5,.slot-3-4,.slot-3-4-5,.slot-4-5,.slot-6,.slot-7,.slot-8,.slot-9,.slot-6-7,.slot-6-7-8,.slot-6-7-8-9,.slot-7-8,.slot-7-8-9,.slot-8-9{ display:inline; float:left; margin-left:30px; }
+  .slot-0,.slot-1,.slot-2,.slot-3,.slot-4,.slot-5{ width:136px; } /* Sixths */
+  .slot-0-1,.slot-1-2,.slot-2-3,.slot-3-4,.slot-4-5{ width:302px; } /* Thirds */
+  .slot-0-1-2-3,.slot-1-2-3-4,.slot-2-3-4-5{ width:634px; } /* Two-Thirds */
+  .slot-0-1-2-3-4,.slot-1-2-3-4-5{ width:800px; } /* Five-Sixths */
+  .slot-6,.slot-7,.slot-8,.slot-9{ width:219px; } /* Quarters */
+  .slot-6-7-8,.slot-7-8-9{ width:717px; } /* Three-Quarters */
+  .slot-0-1-2,.slot-1-2-3,.slot-2-3-4,.slot-3-4-5, .slot-6-7,.slot-7-8,.slot-8-9{ width:468px; } /* Halves */
+}

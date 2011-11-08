@@ -19,12 +19,12 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'rake', '0.8.7'
-gem 'will_paginate', '~> 3.0'
-gem "pjax-rails", "~> 0.1.4"
+#gem 'will_paginate', '~> 3.0'
+gem "pjax-rails"
 #gem 'smurf'
 
 # Use unicorn as the web server
-gem 'unicorn'
+#gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

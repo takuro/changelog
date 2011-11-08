@@ -23,4 +23,26 @@ $(function(){
   $("code.ruby pre").snippet("ruby",{style:"the"});
   $("code.sql pre").snippet("sql",{style:"the"});
   $("code.xml pre").snippet("xml",{style:"the"});
+
+  $("#knob").toggle(
+    function(){
+      $("#index article").css({
+        display: "none"
+      });
+
+      $("#index").animate({
+        height: "32px"
+      }, 300);
+    }, function(){
+      $("#index article").css({
+        display: "block"
+      });
+
+      $("#index").animate({
+        height: "300px"
+      }, 300);
+    }
+  );
+
+
 });

@@ -7,3 +7,4 @@
 //= require jquery.min
 //= require jquery_ujs
 //= require_tree .
+//= require pjax

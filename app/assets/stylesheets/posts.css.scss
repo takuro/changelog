@@ -1,6 +1,6 @@
 @import "_css3pointoh.css.scss";
 
-$blue: #71C4FE;
+$blue: #3eaffe;
 $red: #F8007A;
 $black: #444;
 $border-color: #dcdcdc;
@@ -22,9 +22,6 @@ $logo-color: #C4C4B6;
 
 body {
   background: #fff;
-  background: url(polaroid.png);
-  //background: url(inflicted.png);
-  //background: url(beige_paper.png);
 }
 
 #main {
@@ -32,6 +29,14 @@ body {
   margin: 10px 0;
   background: #fff;
   @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+nav {
+  li {
+    list-style: none;
+    margin: 6px 0;
+    padding: 0;
+  }
 }
 
 .global {
@@ -60,17 +65,17 @@ h1 {
     content : attr(data-title);
   }
 }
-                              
+
 h2 {
   display:block;
   margin: 0;
   padding: 0;
-  margin: 10px 0;
-  font-size: 1.7em;
   a {
     display:block;
     margin: 0;
     padding: 0;
+    font-size: 0.8em;
+    font-weight: normal;
   }
 } 
 h3, h4, h5, h6 { color: lighten($black, 5%); }
@@ -99,19 +104,14 @@ footer.global {
 }
 
 article {
-  border-bottom: dashed 1px lighten($black, 25%);
-  margin-bottom: 70px;
   header {
     margin-top: 20px;
   }
   time {
-    font-size: 0.75em;
+    font-size: 0.85em;
     color: lighten($black, 20%);
     display:block;
     text-align: right;
-  }
-  footer {
-    margin-bottom: 10px;
   }
 }
 
@@ -206,3 +206,4 @@ em {
     }
   }
 }
+

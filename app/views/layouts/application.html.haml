@@ -13,9 +13,9 @@
     - else
       %title= "#{@post_title} | #{config.site_title}" 
     = stylesheet_link_tag "application", :cache => true
-    = stylesheet_link_tag "720_grid", :media => "screen and (min-width: 720px)", :cache => true
-    = stylesheet_link_tag "986_grid", :media => "screen and (min-width: 986px)", :cache => true
-    = stylesheet_link_tag "1236_grid", :media => "screen and (min-width: 1236px)", :cache => true
+    =# stylesheet_link_tag "720_grid", :media => "screen and (min-width: 720px)", :cache => true
+    =# stylesheet_link_tag "986_grid", :media => "screen and (min-width: 986px)", :cache => true
+    =# stylesheet_link_tag "1236_grid", :media => "screen and (min-width: 1236px)", :cache => true
   %body
     %header#logo.global
       %h1
@@ -26,7 +26,13 @@
     #main
       .grid
         .row
-          = yield
+          - if @posts.blank?
+            = yield
+          - else 
+            %nav.slot-0-1
+              = render "index"
+            #log.slot-2-3-4-5{:"data-pjax-container" => "true"}
+              = yield
     %footer.global
       .grid
         .row

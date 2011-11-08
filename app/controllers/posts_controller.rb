@@ -9,12 +9,20 @@ class PostsController < ApplicationController
                           :destroy,
                           :upload_images]
 
+  @@recent = Changelog::Application.config.recent_logs
+
   # GET /posts
   # GET /posts.xml
   # GET /posts.rss
   def index
+    #@posts = Post.select("title, permalink, created_at").order("id DESC").limit(@@recent)
     #@posts = Post.order("id DESC").all
-    @posts = Post.page(params[:page]).order("id DESC")
+    #@posts = Post.page(params[:page]).order("id DESC")
+    
+    @posts = Post.select("title, permalink, created_at").order("id DESC").all
+    post = Post.order("id DESC").limit(1)
+    @post = post[0]
+    @post_title = @post.title
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +34,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
+    #@posts = Post.select("title, permalink, created_at").order("id DESC").limit(@@recent)
+    @posts = Post.select("title, permalink, created_at").order("id DESC").all
     @post = Post.find_by_permalink(params[:permalink])
     @post_title = @post.title
 
@@ -115,7 +125,7 @@ class PostsController < ApplicationController
       end
 
       session[:user_id] = account["auth"]["id"]
-      UserMailer.send_sqlite_data.deliver
+      UserMailer.send_sqlite_data.deliver if Changelog::Application.config.backup_db_when_login
       redirect_to "/"
     end
   end

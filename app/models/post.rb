@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   has_many :tag
   validates :title, :body, :raw_body, :permalink, :presence => true
   include ActionView::Helpers::SanitizeHelper
-  self.per_page = Changelog::Application.config.per_page
+  #self.per_page = Changelog::Application.config.per_page
 
   def remove_html_tag
     self.body = strip_tags self.body
