@@ -135,13 +135,14 @@ footer.global {
 
 article {
   header {
-    margin-top: 20px;
+    margin: 10px 0 35px 0;
   }
   time {
     font-size: 0.85em;
     color: lighten($black, 20%);
     display:block;
     text-align: right;
+    margin: 20px 0;
   }
 }
 
