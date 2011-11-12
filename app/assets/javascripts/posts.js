@@ -39,7 +39,12 @@ function snippet() {
 function current_page_link_disable() {
   var current_page = get_current_page();
   $("nav .current").removeClass("current");
-  $("nav a[href*='" + current_page + "']").addClass("current");
+
+  if (current_page == "index") {
+    $("nav li:first a").addClass("current");
+  } else {
+    $("nav a[href*='" + current_page + "']").addClass("current");
+  }
 }
 
 function get_current_page() {
