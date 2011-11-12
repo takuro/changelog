@@ -7,6 +7,15 @@ $(function(){
   $("#insert-images").click(function(){
     $("#uploaded-images").toggle();
   });
+
+  snippet();
+
+  $(document).bind('end.pjax', function() {
+    snippet();
+  });
+});
+
+function snippet() {
   $("code.shell pre").snippet("c",{style:"the"});
   $("code.c pre").snippet("c",{style:"the"});
   $("code.cpp pre").snippet("cpp",{style:"the"});
@@ -23,26 +32,4 @@ $(function(){
   $("code.ruby pre").snippet("ruby",{style:"the"});
   $("code.sql pre").snippet("sql",{style:"the"});
   $("code.xml pre").snippet("xml",{style:"the"});
-
-  $("#knob").toggle(
-    function(){
-      $("#index article").css({
-        display: "none"
-      });
-
-      $("#index").animate({
-        height: "32px"
-      }, 300);
-    }, function(){
-      $("#index article").css({
-        display: "block"
-      });
-
-      $("#index").animate({
-        height: "300px"
-      }, 300);
-    }
-  );
-
-
-});
+}
