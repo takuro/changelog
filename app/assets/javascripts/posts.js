@@ -9,9 +9,11 @@ $(function(){
   });
 
   snippet();
+  current_page_link_disable();
 
   $(document).bind('end.pjax', function() {
     snippet();
+    current_page_link_disable();
   });
 });
 
@@ -32,4 +34,23 @@ function snippet() {
   $("code.ruby pre").snippet("ruby",{style:"the"});
   $("code.sql pre").snippet("sql",{style:"the"});
   $("code.xml pre").snippet("xml",{style:"the"});
+}
+
+function current_page_link_disable() {
+  var current_page = get_current_page();
+  $("nav .current").removeClass("current");
+  $("nav a[href*='" + current_page + "']").addClass("current");
+}
+
+function get_current_page() {
+  var url = document.location.href;
+  var sa = url.split("/");
+  var current_page = sa[sa.length - 1];
+  var current_page = current_page.replace("#", "");
+      
+  if (current_page == "") {
+    current_page = "index";
+  }
+        
+  return current_page;
 }
