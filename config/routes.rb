@@ -4,12 +4,12 @@ Changelog::Application.routes.draw do
 
   root :to => "posts#index"
   controller :posts do
-    match "new", :to => :new
-    match "log/:permalink", :to => :show
-    match "log/:permalink/edit", :to => :edit
-    match "log/:permalink/destroy", :to => :destroy
-    match "login", :to => :login
-    match "upload_images", :to => :upload_images
+    get "new", :to => :new
+    get "log/:permalink", :to => :show
+    get "log/:permalink/edit", :to => :edit
+    get "log/:permalink/destroy", :to => :destroy
+    get "login", :to => :login
+    get "upload_images", :to => :upload_images
   end
 
   # The priority is based upon order of creation:

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+#gem 'rails', '3.2.0'
+gem 'rails', ' ~> 4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,16 +10,18 @@ gem 'sqlite3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
+  #gem 'sass-rails', "  ~> 3.2.3"
+  gem 'sass-rails', ' ~> 4.0.0'
+  #gem 'coffee-rails', "~> 3.2.1"
+  gem 'coffee-rails', ' ~> 4.0.0'
+  gem 'uglifier'," >= 1.0.3"
   gem 'execjs'
   gem 'therubyracer'
 end
 
 gem 'jquery-rails'
 gem 'haml'
-gem 'rake', '0.8.7'
+#gem 'rake', '0.8.7'
 #gem 'will_paginate', '~> 3.0'
 gem "pjax-rails"
 #gem 'smurf'

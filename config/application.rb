@@ -106,7 +106,7 @@ module Changelog
     # Twitter へのリンク
     config.twitter = "http://twitter.com/#{config.twitter_userid}"
     # ユーザアイコン URL
-    config.user_icon_url = "http://api.twitter.com/1/users/profile_image/#{config.twitter_userid}.json?size=bigger"
+    config.user_icon_url = "isitkr_o.png"
 
     # "Recent logs" に表示する記事数
     config.recent_logs = 10
@@ -116,10 +116,10 @@ module Changelog
       # "サイト名", "サイトへのリンク URL",
       "Twitter @#{config.twitter_userid}", config.twitter,
       "Facebook", "http://www.facebook.com/takuro.ishii",
-      "Google+", "https://plus.google.com/u/0/105803868642482893081",
       "Tumblr - #{config.twitter_userid}", "http://#{config.twitter_userid}.tumblr.com/",
       "Github", "https://github.com/takuro",
-      "PHPLab", "http://www7.atpages.jp/phplab/",
+      "PHPLab", "http://isitkr.gehirn.ne.jp/phplab/",
+      "Google+", "https://plus.google.com/u/0/105803868642482893081",
     ]
 
   end

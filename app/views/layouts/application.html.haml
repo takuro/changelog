@@ -12,7 +12,8 @@
       %title= config.site_title
     - else
       %title= "#{@post_title} | #{config.site_title}" 
-    = stylesheet_link_tag "application", :cache => true
+    %meta{:"name" => "google-site-verification", :content => "sSu5vyoiPIwHIg1_RwsWFCeBdamKaegaFjQcwqmqR1I"}
+    = stylesheet_link_tag "application"
     =# stylesheet_link_tag "720_grid", :media => "screen and (min-width: 720px)", :cache => true
     =# stylesheet_link_tag "986_grid", :media => "screen and (min-width: 986px)", :cache => true
     =# stylesheet_link_tag "1236_grid", :media => "screen and (min-width: 1236px)", :cache => true
@@ -55,4 +56,4 @@
       = Time.now.strftime("%Y")
       isitkr.org
 
-  = javascript_include_tag "application", :cache => true
+  = javascript_include_tag "application"
